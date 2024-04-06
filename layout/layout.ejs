@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+<body>
+  <%- partial('_partial/header') %>
+  <div class="nav-close" role="button" aria-label="Close"></div>
+  <section class="page-wrapper">
+    <%- body %>
+    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<article class="<%= post.layout %>">
+    <div class="inner">
+        <div class="box post-box">
+            <h2 class="post-title"><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+            <span class="post-meta">
+                <%= __('By') %>
+                <%= post.author || config.author %>
+                <% if (post.tags && post.tags.length) { %>
+                    <%= __('in') %> <a class="post-meta-tag" href="<%- url_for(post.tags.data[0].path) %>"><%= post.tags.data[0].name %></a>
+                <% } %>
+                <%= __('on') %>
+                <time datetime="<%= post.date.format('YYYY-MM-DD') %>"><%= post.date.format('DD MMM YYYY') %></time>
+            </span>
+            <p class="post-excerpt"><%- post.excerpt %> </p>
+            <div class="pagination"><a class="pagination-prev" href="<%- url_for(post.path) %>"><%= __('Read more') %></a></div>
+            
+        </div>
+    </div>
+</article>

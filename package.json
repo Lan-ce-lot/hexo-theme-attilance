@@ -1,0 +1,15 @@
+{
+  "name": "hexo-theme-attilance",
+  "version": "1.0.0",
+  "description": "Hexo Theme Attilance",
+  "repository": "Lan-ce-lot/hexo-theme-attilance",
+  "keywords": [
+    "hexo",
+    "theme",
+    "attilance"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "hexo-renderer-stylus": "^3.0.1"
+  }
+}

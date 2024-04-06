@@ -1,0 +1,124 @@
+// #footer
+//   background: color-footer-background
+//   padding: 50px 0
+//   border-top: 1px solid color-border
+//   color: color-grey
+//   a
+//     color: color-link
+//     text-decoration: none
+//     &:hover
+//       text-decoration: underline
+
+// #footer-info
+//   line-height: line-height
+//   font-size: 0.85em
+
+.nav-footer {
+    position: relative;
+    z-index: 20;
+    padding-top: calc(12rem + 8vw);
+    padding-bottom: 4rem;
+    margin-top: auto
+}
+
+.nav-footer .inner {
+    max-width: none;
+    padding: 0 4rem
+}
+
+.nav-footer .nav-wrapper {
+    display: flex;
+    padding: 0 4rem
+}
+
+@media only screen and (max-width: 640px) {
+    .nav-footer .nav-wrapper {
+        flex-direction: column;
+        text-align: center
+    }
+}
+
+.nav-footer ul {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+@media only screen and (max-width: 640px) {
+    .nav-footer ul {
+        margin-bottom: 3rem;
+        justify-content: center
+    }
+}
+
+.nav-footer ul:last-child {
+    justify-content: flex-end
+}
+
+.nav-footer li {
+    position: relative;
+    margin-right: 3rem
+}
+
+.nav-footer li.active a {
+    color: #3b3d40;
+    font-weight: 500
+}
+
+@media (prefers-color-scheme: dark) {
+    .nav-footer li.active a {
+        color: #e1e3e6
+    }
+}
+
+.nav-footer li a {
+    display: block;
+    font-size: 1.5em;
+    line-height: 2rem;
+    color: #909499;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer
+}
+
+.nav-footer li a:focus,
+.nav-footer li a:hover {
+    color: #3b3d40
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .nav-footer li a:focus,
+    .nav-footer li a:hover {
+        color: #e1e3e6
+    }
+}
+
+.nav-footer li:last-child {
+    margin-right: 0
+}
+
+.nav-copy {
+    display: block;
+    width: 100%;
+    font-size: 1.5em;
+    line-height: 2rem;
+    color: #909499
+}
+
+@media (prefers-color-scheme: dark) {
+    .nav-copy {
+        color: #909499
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .nav-copy {
+        margin-bottom: 1rem
+    }
+}

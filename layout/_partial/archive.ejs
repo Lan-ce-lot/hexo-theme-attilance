@@ -1,0 +1,79 @@
+<header class="blog-header <% if (theme.banner) { %>has-cover<% } %>">
+  <div class="inner">
+      <div class="box blog-box">
+          <h1 class="blog-name"><%= config.title %></h1>
+          <% if (theme.subtitle || config.subtitle) { %>
+          <span class="blog-description"><%= (theme.subtitle || config.subtitle) %></span>
+          <% } %>
+      </div>
+      <% if (theme.banner) { %>
+      <div class="blog-cover cover">
+          <img
+          srcset="<%= url_for(theme.banner) %> 320w,
+                  <%= url_for(theme.banner) %> 640w,
+                  <%= url_for(theme.banner) %> 960w,
+                  <%= url_for(theme.banner) %> 1920w"
+          src="<%= url_for(theme.banner) %>"
+          alt="<%= config.title %>" />
+      </div>
+      <% } %>
+  </div>
+</header>
+<div id="index" class="container">
+
+	<main class="content" role="main">
+    <% if (pagination == 2){ %>
+      <% page.posts.each(function(post){ %>
+        <%- partial('min-article', {post: post, index: true}) %>
+      <% }) %>
+      <% } else { %>
+        <% var last; %>
+        <% page.posts.each(function(post, i){ %>
+          <% var year = post.date.year(); %>
+          <% if (last != year){ %>
+            <% if (last != null){ %>
+              </div></section>
+            <% } %>
+            <% last = year; %>
+            <section class="archives-wrap">
+              <div class="archive-year-wrap">
+                <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-year"><%= year %></a>
+              </div>
+              <div class="archives">
+          <% } %>
+          <%- partial('archive-post', {post: post, even: i % 2 == 0}) %>
+        <% }) %>
+        <% if (page.posts.length){ %>
+          </div></section>
+        <% } %>
+      <% } %>
+
+    <% if (page.total > 1){ %>
+      <nav class="pagination" aria-label="<%= __('Pagination') %>">
+        <div class="inner">
+            <div class="box pagination-box">
+              <% if (page.prev) { %>
+                <a title="<%= __('Newer Posts') %>" class="pagination-next" href="<%= page.prev === 1 ? '/' : '/page/' + page.prev + '/' %>">
+                    <i class="icon icon-arrow-left"></i>
+                    <span class="pagination-label"><%= __('Newer Posts') %></span>
+                </a>
+                <% } %>
+
+                <span class="pagination-info"><%= __('Page %d of %d', page.current, page.total) %></span>
+
+
+                <% if (page.next || page.hasNext){ %>
+                <a title="<%= __('Older Posts') %>" class="pagination-prev" href="/page/<%= page.next %>/">
+                    <span class="pagination-label"><%= __('Older Posts') %></span>
+                    <i class="icon icon-arrow-right"></i>
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+    
+    
+    <% } %>
+	</main>
+
+</div>
