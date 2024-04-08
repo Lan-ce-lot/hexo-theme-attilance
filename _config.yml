@@ -13,7 +13,7 @@ rss: /atom.xml
 # Path of title banner image of page top
 # source/css/images/wallhaven-8586my.png
 banner: "css/images/wallhaven-8586my.png"
-avatar: "css/images/wallhaven-8586my.png"
+avatar: "css/images/avatar.jpg"
 # Subtitle of page top
 subtitle: "你热爱的，就是你的牲活"
 # Header links with icon, specified links will appear at the top right corner of the page
