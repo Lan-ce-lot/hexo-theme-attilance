@@ -6,10 +6,12 @@
       </span>
       <% } %>
       <ul>
-        <% for (var i in theme.menu){ %>
-          <li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+        <% for(var label in theme.menu) { %>
+            <li class="<% if (is_current(theme.menu[label])) { %>nav-<%= label.toLowerCase() %> active<% } else { %>nav-<%= label.toLowerCase() %><% } %>">
+                <a href="<%- url_for(theme.menu[label], { absolute: true }) %>"><span><%= label %></span></a>
+            </li>
         <% } %>
-      </ul>
+    </ul>
       <ul class="nav-meta">
         <% if (theme.links && theme.links.twitter) { %>
         <li class="nav-twitter">
