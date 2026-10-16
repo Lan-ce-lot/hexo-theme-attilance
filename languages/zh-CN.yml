@@ -67,3 +67,27 @@ comments:
 tooltip:
   copy_tip: 复制到粘贴板！
   copied: 复制成功！
+
+topic: 标签
+tag: 标签
+topics: 标签
+category: 分类
+archive: 归档
+article: 文章
+by: 作者
+in: ·
+on: ·
+newer_posts: 较新的文章
+older_posts: 较早的文章
+share: 分享
+min_read: 分钟阅读
+one_min_read: 1 分钟阅读
+system_theme: 跟随系统
+dark_theme: 深色
+light_theme: 浅色
+close: 关闭
+menu: 菜单
+posts:
+  zero: 没有文章
+  one: 1 篇文章
+  other: "%d 篇文章"

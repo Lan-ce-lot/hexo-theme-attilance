@@ -1,35 +1,28 @@
-<div class="progress-container">
-	<span class="progress-bar"></span>
-</div>
-
 <header class="post-header">
-	<div class="inner">
-		<!-- <span class="post-info">
-      <span class="post-type">
-        Article
-      </span>
-    </span> -->
+  <div class="inner">
+    <h1 class="post-title"><%= page.title || __('topics') %></h1>
   </div>
 </header>
 
 <main class="content" role="main">
   <article class="post">
     <div class="inner">
-        <div id="tag-cloud">
-            <div class="tag-cloud-title">
-                <% var visibleTags = 0 %>
-                <% site.tags.each(function(tag){ %>
-                  <% if (tag.length) { %>
-                    <% visibleTags += 1 %>
-                  <% } %>
-                <% }) %>
-                <%- _p('counter.tag_cloud', visibleTags) %>
-            </div>
-            <div class="tag-cloud-tags">
-              <%- tagcloud({min_font: 15, max_font: 30, amount: 300}) %>
-            </div>
-          </div>
+      <%
+        var tags = site.tags.filter(function(tag){ return tag.length }).toArray().sort(function(a, b){
+          return b.length - a.length || a.name.localeCompare(b.name);
+        });
+      %>
+      <% if (!tags.length) { %>
+      <section class="post-content">
+        <p><%= __('counter.tag_cloud.zero') %></p>
+      </section>
+      <% } else { %>
+      <section class="tag-index" aria-label="<%= page.title || __('topics') %>">
+        <% tags.forEach(function(tag){ %>
+        <a href="<%- url_for(tag.path) %>"><%= tag.name %> <span><%= tag.length %></span></a>
+        <% }) %>
+      </section>
+      <% } %>
     </div>
-
   </article>
 </main>

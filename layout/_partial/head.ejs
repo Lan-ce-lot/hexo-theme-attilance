@@ -1,11 +1,16 @@
 <head>
   <meta charset="utf-8">
+  <script>
+    var localTheme = localStorage.getItem('attila_theme');
+    if (localTheme === 'dark') document.documentElement.classList.add('theme-dark');
+    if (localTheme === 'light') document.documentElement.classList.add('theme-light');
+  </script>
   <%- partial('google-analytics') %>
   <%
   var title = page.title;
 
   if (is_archive()){
-    title = __('archive_a');
+    title = __('archive');
 
     if (is_month()){
       title += ': ' + page.year + '/' + page.month;
@@ -37,5 +42,5 @@
     <%- css('fancybox/jquery.fancybox.min.css') %>
   <% } %>
   <%- css('https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css') %>
-  
+
 </head>

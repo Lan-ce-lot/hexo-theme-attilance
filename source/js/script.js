@@ -87,7 +87,7 @@ window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,heig
 });
 
 // Caption
-$('.article-entry').each(function(i){
+$('.post-content').each(function(i){
 $(this).find('img').each(function(){
   if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
 
@@ -216,6 +216,7 @@ $container.removeClass('mobile-nav-on');
     'use strict';
     var images = document.querySelectorAll('.kg-gallery-image img');
     images.forEach(function(image) {
+      if (!image.attributes.width || !image.attributes.height) return;
       var container = image.closest('.kg-gallery-image');
       var width = image.attributes.width.value;
       var height = image.attributes.height.value;

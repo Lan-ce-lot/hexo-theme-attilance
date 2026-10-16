@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= Array.isArray(config.language) ? config.language[0] : (config.language || 'en') %>">
 <%- partial('_partial/head') %>
-<body>
+<body class="<% if (page.current > 1) { %>paged<% } %>">
   <%- partial('_partial/header') %>
-  <div class="nav-close" role="button" aria-label="Close"></div>
+  <div class="nav-close" role="button" aria-label="<%= __('close') %>"></div>
   <section class="page-wrapper">
     <%- body %>
     <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
   </section>
-
+  <%- partial('_partial/after-footer') %>
 </body>
 </html>

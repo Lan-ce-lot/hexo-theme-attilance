@@ -1,6 +1,10 @@
 <div class="nav-footer">
-  <nav class="nav-wrapper">
-    <span class="nav-copy"><%= config.author || config.title %> &copy; <%= new Date().getFullYear() %>  <a class="nav-rss" title="RSS" href="/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
-
+  <nav class="nav-wrapper" aria-label="<%= __('footer.copyright') %>">
+    <span class="nav-copy"><%= config.author || config.title %> &copy; <%= new Date().getFullYear() %> <a class="nav-rss" title="RSS" href="<%- url_for(theme.rss || '/atom.xml') %>" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
+    <span class="nav-credits">
+      <a class="menu-item js-theme" href="#" data-system="<%= __('system_theme') %>" data-dark="<%= __('dark_theme') %>" data-light="<%= __('light_theme') %>">
+        <span class="theme-icon"></span><span class="theme-text"><%= __('system_theme') %></span>
+      </a>
+    </span>
   </nav>
 </div>

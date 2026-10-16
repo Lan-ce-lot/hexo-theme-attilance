@@ -67,3 +67,27 @@ comments:
 tooltip:
   copy_tip: Copy to clipboard!
   copied: Copied!
+
+topic: Topic
+tag: Tag
+topics: Topics
+category: Category
+archive: Archive
+article: Article
+by: By
+in: in
+on: on
+newer_posts: Newer Posts
+older_posts: Older Posts
+share: Share
+min_read: min read
+one_min_read: 1 min read
+system_theme: System theme
+dark_theme: Dark theme
+light_theme: Light theme
+close: Close
+menu: Menu
+posts:
+  zero: No Posts
+  one: 1 Post
+  other: "%d Posts"

@@ -1,0 +1,21 @@
+<% if (page.total > 1){ %>
+<nav class="pagination<% if (extra) { %> extra-pagination<% } %>" aria-label="<%= _p('pagination.page', page.current, page.total) %>">
+  <div class="inner">
+    <div class="box pagination-box">
+      <% if (page.prev) { %>
+      <a title="<%= __('newer_posts') %>" class="pagination-next" href="<%- url_for(page.prev_link) %>">
+        <i class="icon icon-arrow-left"></i>
+        <span class="pagination-label"><%= __('newer_posts') %></span>
+      </a>
+      <% } %>
+      <span class="pagination-info"><%= _p('pagination.page', page.current, page.total) %></span>
+      <% if (page.next) { %>
+      <a title="<%= __('older_posts') %>" class="pagination-prev" href="<%- url_for(page.next_link) %>">
+        <span class="pagination-label"><%= __('older_posts') %></span>
+        <i class="icon icon-arrow-right"></i>
+      </a>
+      <% } %>
+    </div>
+  </div>
+</nav>
+<% } %>
