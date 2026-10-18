@@ -11,8 +11,19 @@
                 <%= __('on') %>
                 <time datetime="<%= post.date.format('YYYY-MM-DD') %>"><%= post.date.format('DD MMM YYYY') %></time>
             </span>
-            <% if (post.excerpt) { %>
-            <p class="post-excerpt"><%- post.excerpt %>&hellip;</p>
+            <%
+              var excerptLimit = theme.excerpt_length || 120;
+              var excerptText = strip_html(post.excerpt || '').replace(/\s+/g, ' ').trim();
+              if (excerptText.length > excerptLimit) {
+                var excerptCut = excerptText.slice(0, excerptLimit);
+                var excerptSpace = excerptCut.lastIndexOf(' ');
+                if (excerptSpace > excerptLimit * 0.6) excerptCut = excerptCut.slice(0, excerptSpace);
+                excerptCut = excerptCut.replace(/[\s,，、;；:：]+$/g, '').trim();
+                excerptText = excerptCut + '…';
+              }
+            %>
+            <% if (excerptText) { %>
+            <p class="post-excerpt"><%= excerptText %></p>
             <% } %>
         </div>
     </div>

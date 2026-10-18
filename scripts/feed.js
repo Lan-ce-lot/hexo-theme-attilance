@@ -1,7 +1,24 @@
 'use strict';
 
-// The theme links to /atom.xml. Generate it when the site has no feed plugin.
-if (!hexo.extend.generator.list().feed) {
+// hexo-server labels the feed application/atom+xml and omits charset.
+// Browsers then read the UTF-8 bytes as Latin-1, so 年度总结 shows up as å¹´åº¦æ€»ç»“.
+hexo.extend.filter.register('server_middleware', function (app) {
+  app.use(function (req, res, next) {
+    const setHeader = res.setHeader;
+    res.setHeader = function (name, value) {
+      if (typeof name === 'string' && name.toLowerCase() === 'content-type' && typeof value === 'string' && /(?:atom|rss)\+xml|\/xml\b/i.test(value) && !/charset=/i.test(value)) {
+        value += '; charset=utf-8';
+      }
+      return setHeader.call(this, name, value);
+    };
+    next();
+  });
+}, 1);
+
+// The theme links to /atom.xml. Generate a feed only when no feed plugin is loaded.
+// hexo-generator-feed registers itself as "atom", not "feed".
+const feedGenerators = hexo.extend.generator.list();
+if (!feedGenerators.feed && !feedGenerators.atom && !feedGenerators.rss2) {
   hexo.extend.generator.register('feed', function (locals) {
     const rss = hexo.theme.config.rss || 'atom.xml';
     const path = String(rss).replace(/^\//, '');

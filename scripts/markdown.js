@@ -24,3 +24,12 @@ hexo.extend.filter.register('before_post_render', function (data) {
   if (data && typeof data.content === 'string') data.content = nestMarkAndStrong(data.content);
   return data;
 });
+
+// A front-matter excerpt skips Hexo's <!--more--> split, so the marker stays in
+// the HTML and shows up in atom.xml. The article page never renders it.
+hexo.extend.filter.register('after_post_render', function (data) {
+  if (data && typeof data.content === 'string') {
+    data.content = data.content.replace(/<!-- ?more ?-->/gi, '');
+  }
+  return data;
+}, 15);
